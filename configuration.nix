@@ -147,7 +147,7 @@ networking.enableB43Firmware = true;
     extraSpecialArgs = { inherit inputs; };
     users = {
       "alex" = import ./home.nix;
-    }
+    };
   }
 
   # Allow unfree packages
