@@ -52,6 +52,12 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  services.blueman.enable = true;
+
+  services.mpd = {
+    enable = true;
+};
+
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us,ru";
@@ -85,6 +91,9 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+
+  # xdg.portal.enable = true;
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
@@ -156,7 +165,31 @@
     pkgs.neofetch
     vscode
     git
+    kitty
+    pkgs.waybar
+    (pkgs.waybar.overrideAttrs (oldAttrs: {
+        mesonGlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      })
+    )
+    pkgs.dunst
+    libnotify
+    rofi-wayland
+    lxde.lxsession
+    grim
+    slurp
   ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
+  ];  
+
+  security.polkit.enable = true;
+
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -167,6 +200,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs.hyprland.enable = true;
 
   # List services that you want to enable:
 
