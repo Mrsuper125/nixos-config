@@ -114,6 +114,8 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  hardware.bluetooth.enable = true;
+
 #Some magic with network. DO NOT TOUCH OR IT WILL FUCK UP
 boot.blacklistedKernelModules = ["rtl8xxxu"];
 boot.extraModulePackages = with config.boot.kernelPackages; [
