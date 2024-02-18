@@ -10,7 +10,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -18,12 +18,21 @@
     {
     
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-          extraSpecialArgs = {inherit inputs;};
+          specialArgs = {inherit inputs;};
           modules = [ 
             ./configuration.nix
             inputs.home-manager.nixosModules.default
           ];
         };
+
+      homeConfigurations = {
+      "alex" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs;};
+        # > Our main home-manager configuration file <
+        modules = [./home.nix];
+      };
+    };
 
     };
 }
