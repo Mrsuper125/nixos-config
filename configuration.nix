@@ -177,6 +177,7 @@
     lxde.lxsession
     grim
     slurp
+    pavucontrol
   ];
 
   fonts.packages = with pkgs; [
