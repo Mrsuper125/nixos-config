@@ -13,6 +13,9 @@
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
   home = {
     username = "alex";
     homeDirectory = "/home/alex";
@@ -30,7 +33,5 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
-    systemd.enable = true;
   };
 }

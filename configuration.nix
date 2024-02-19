@@ -156,7 +156,7 @@
   };
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs pkgs config;};
+    extraSpecialArgs = {inherit inputs pkgs;};
     users = {
       "alex" = import ./home.nix;
     };
