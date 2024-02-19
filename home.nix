@@ -1,36 +1,30 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./features/kitty.nix
+    inputs.nix-colors.homeManagerModules.default
+  ];
+
+  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "alex";
-  home.homeDirectory = "/home/alex";
+  home = {
+    username = "alex";
+    homeDirectory = "/home/alex";
 
-  imports = [
-    inputs.nix-colors.homeManagerModules.default
-    ./features/kitty.nix
-  ];
+    stateVersion = "23.11"; # Please read the comment before changing.
 
-  colorScheme = inputs.nix-colors.colorSchemes.catpuccin-machiato;
-  
-  home.stateVersion = "23.11"; # Please read the comment before changing.
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-  ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
+    # The home.packages option allows you to install Nix packages into your
+    # environment.
+    packages = with pkgs; [
+      nitch
+    ];
   };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'.
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -39,6 +33,4 @@
     package = pkgs.hyprland;
     systemd.enable = true;
   };
-
-  
 }
