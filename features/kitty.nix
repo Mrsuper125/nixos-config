@@ -1,6 +1,6 @@
 {config, ...}: {
   programs.kitty = with config.colorScheme.palette; {
-    enable = config.home-manager.kitty.enable;
+    enable = true; 
     settings = {
       scrollback_lines = 10000;
       update_check_interval = 0;
