@@ -10,7 +10,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
@@ -56,7 +55,7 @@
 
   services.mpd = {
     enable = true;
-};
+  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -143,14 +142,24 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+
   users.users.alex = {
+    # initialPassword = "test";
     isNormalUser = true;
     description = "alex";
+
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       firefox
       #  thunderbird
     ];
+  };
+
+  home-manager = {
+    extraSpecialArgs = {inherit inputs pkgs config;};
+    users = {
+      "alex" = import ./home.nix;
+    };
   };
 
   # Allow unfree packages
@@ -167,8 +176,9 @@
     git
     kitty
     pkgs.waybar
-    (pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonGlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    (
+      pkgs.waybar.overrideAttrs (oldAttrs: {
+        mesonGlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       })
     )
     pkgs.dunst
@@ -183,8 +193,8 @@
 
   fonts.packages = with pkgs; [
     font-awesome
-    (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
-  ];  
+    (nerdfonts.override {fonts = ["CascadiaCode"];})
+  ];
 
   security.polkit.enable = true;
 
