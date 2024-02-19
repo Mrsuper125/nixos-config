@@ -178,6 +178,7 @@
     grim
     slurp
     pavucontrol
+    blueberry
   ];
 
   fonts.packages = with pkgs; [
