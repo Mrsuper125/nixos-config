@@ -11,7 +11,7 @@
     ./features/kitty.nix
   ];
 
-  colorScheme = inputs.nix-colors.colorScheme.catpuccin-machiato;
+  colorScheme = inputs.nix-colors.colorSchemes.catpuccin-machiato;
   
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
