@@ -1,4 +1,4 @@
-{config, ...}: {
+{pkgs, config, ...}: {
   programs.kitty = with config.colorScheme.palette; {
     enable = true; 
     settings = {
