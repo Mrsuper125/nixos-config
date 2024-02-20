@@ -234,8 +234,8 @@
       };
       "hyprland/language" = {
         format = "<span font='16' rise='-2500' color='#${base07}'>󰌌 </span> {}";
-        format-en = " US";
-        format-ru = " RU";
+        format-en = "US";
+        format-ru = "RU";
       };
 
       tray = {
