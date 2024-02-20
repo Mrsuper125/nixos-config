@@ -7,6 +7,7 @@
   imports = [
     ./features/kitty.nix
     ./features/waybar.nix
+    ./features/rofi.nix
     inputs.nix-colors.homeManagerModules.default
   ];
 
