@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./features/kitty.nix
+    ./features/waybar.nix
     inputs.nix-colors.homeManagerModules.default
   ];
 
