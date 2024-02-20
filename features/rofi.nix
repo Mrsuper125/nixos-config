@@ -4,7 +4,7 @@
   config,
   ...
 }: with lib; {
-    home.file."~/.config/rofi/configs/config.rasi" = with config.colorScheme.palette; {
+    home.file."/home/alex/.config/rofi/config.rasi" = with config.colorScheme.palette; {
       
       text = ''
       configuration {
@@ -18,7 +18,7 @@
       * {
         font: "JetbrainsMono Nerd Font 14";
 
-        background-color: #${base01}};
+        background-color: #${base01};
         separatorcolor: transparent;
 
         border: 0;
@@ -106,11 +106,11 @@
       }
       element.normal.active {
         background-color: @accent;
-        text-color: #${base01};
+        text-color: #${base05};
       }
       element.selected.normal {
         background-color: @accent;
-        text-color: #${base01};
+        text-color: #${base05};
       }
       element.selected.urgent {
         background-color: #${base01};
@@ -118,7 +118,7 @@
       }
       element.selected.active {
         background-color: @accent;
-        text-color:	#${base01};
+        text-color:	#${base05};
       }
       element.alternate.normal {
         background-color: #${base01};
@@ -141,6 +141,6 @@
       enable = true;
       package = pkgs.rofi-wayland;
       
-      theme = "~/.config/rofi/configs/config.rasi";
+      theme = "/home/alex/.config/rofi/config.rasi";
     };  
 }
