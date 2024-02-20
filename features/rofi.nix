@@ -109,7 +109,7 @@
         text-color: #${base05};
       }
       element.selected.normal {
-        background-color: @accent;
+        background-color: #${base02};
         text-color: #${base05};
       }
       element.selected.urgent {
@@ -117,7 +117,7 @@
         text-color: #${base05};
       }
       element.selected.active {
-        background-color: @accent;
+        background-color: #${base02};
         text-color:	#${base05};
       }
       element.alternate.normal {
