@@ -189,6 +189,7 @@
     slurp
     pavucontrol
     blueberry
+    okular
   ];
 
   fonts.packages = with pkgs; [
