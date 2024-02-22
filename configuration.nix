@@ -190,6 +190,10 @@
     pavucontrol
     blueberry
     okular
+    pkgs.jetbrains.rider
+    pkgs.dotnet-sdk_7
+    fontconfig
+    icu.dev
   ];
 
   fonts.packages = with pkgs; [
@@ -202,6 +206,13 @@
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+  };
+
+  environment.variables = {
+    LD_LIBRARY_PATH = with pkgs; lib.makeLibraryPath [
+      # ...other libs
+      fontconfig
+    ];
   };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
