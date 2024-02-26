@@ -170,18 +170,18 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    pkgs.vesktop
-    pkgs.neofetch
+    vesktop
+    neofetch
     vscode
     git
     kitty
-    pkgs.waybar
+    waybar
     (
-      pkgs.waybar.overrideAttrs (oldAttrs: {
+      waybar.overrideAttrs (oldAttrs: {
         mesonGlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       })
     )
-    pkgs.dunst
+    dunst
     libnotify
     rofi-wayland
     lxde.lxsession
@@ -190,10 +190,24 @@
     pavucontrol
     blueberry
     okular
-    pkgs.jetbrains.rider
-    pkgs.dotnet-sdk_7
+
+    #.NET
+    jetbrains.rider
+    dotnet-sdk_7
     fontconfig
     icu.dev
+
+    #Frontend
+    nodejs
+    jetbrains.webstorm
+
+    #Backend
+    go
+    jetbrains.goland
+    #mongodb
+    mongodb-compass
+    docker
+    redis
   ];
 
   fonts.packages = with pkgs; [
