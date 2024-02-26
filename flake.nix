@@ -9,6 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    yandex-music = {
+      url = "github:cucumber-sp/yandex-music-linux";
+    };
+
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -19,14 +23,14 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
   in {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         ./configuration.nix
         inputs.home-manager.nixosModules.default
-      ];
+      ] ++ inputs.yandex-music.modules;
     };
 
     # homeConfigurations = {

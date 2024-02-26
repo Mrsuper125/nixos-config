@@ -208,6 +208,8 @@
     mongodb-compass
     docker
     redis
+
+    yandex-music
   ];
 
   fonts.packages = with pkgs; [
