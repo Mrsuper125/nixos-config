@@ -243,6 +243,9 @@
 
   programs.hyprland.enable = true;
 
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
