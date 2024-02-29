@@ -209,6 +209,8 @@
     docker
     redis
 
+    jetbrains.datagrip
+    
     yandex-music
   ];
 
