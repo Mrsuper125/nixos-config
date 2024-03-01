@@ -210,6 +210,10 @@
     redis
 
     jetbrains.datagrip
+
+    libreoffice-qt
+    hunspell
+    hunspellDicts.ru_RU
     
     yandex-music
   ];
